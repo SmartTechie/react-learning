@@ -19,8 +19,8 @@
             render: function () {
                 return (
                     <div>
-                        <h2>This is a class component</h2>
-                        <p>This is a simple Paragraph</p>
+                        <h2>Movie Name: {this.props.title} </h2>
+                        <p>Genre: {this.props.genre}</p>
                     </div>);
             }
 
@@ -28,10 +28,9 @@
 
         ReactDOM.render(
             <div>
-                <Bacon/>
-                <Bacon/>
-                <Bacon/>
-                <Bacon/>
+                <Bacon title="Avatar" genre="Action" />
+                <Bacon title="Captain America" genre="Action" />
+                <Bacon title="Nun" genre="Horror" />
             </div>,
             document.getElementById('container')
         );
