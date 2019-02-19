@@ -1,2 +1,2 @@
-# react-learning
-Learning ReactJs
+# Learning ReactJs
+Jumping into React World :)
