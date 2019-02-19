@@ -1,2 +1,2 @@
 # Learning ReactJs
-Jumping into React World :)
+Jumping into React World.
