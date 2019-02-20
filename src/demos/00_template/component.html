@@ -27,10 +27,8 @@
                 this.props.deleteFromBoard(this.props.index);
             },
             save: function() {
-                let val = this.refs.newText.value;
-                console.log("New comment: "+ val);
+                this.props.updateCommentsText(this.refs.newText.value, this.props.index);
                 this.setState({editing: false});
-                this.props.updateCommentsText(val, this.props.index);
             },
             renderNormal: function() {
                 return (
@@ -68,15 +66,18 @@
                 }
             },
             removeComment: function(i) {
-                console.log('Removing Comment id:' + {i});
                 let arr = this.state.comments;
                 arr.splice(i, 1);
                 this.setState({comments: arr});
             },
             updateComment: function(newText, i) {
-                console.log('Updating Comment id:' + {i} +'with text' + newText);
                 let arr = this.state.comments;
                 arr[i] = newText;
+                this.setState({comments: arr});
+            },
+            addNew: function(newText){
+                let arr = this.state.comments;
+                arr.push(newText);
                 this.setState({comments: arr});
             },
             eachComment: function (text, i) {
@@ -84,8 +85,11 @@
             },
             render: function () {
                 return(
-                    <div className="board">
-                        {this.state.comments.map(this.eachComment)}
+                    <div>
+                        <button onClick={this.addNew.bind(null, 'Default Comment')} className="button-info create">Add new comment</button>
+                        <div className="board">
+                            {this.state.comments.map(this.eachComment)}
+                        </div>
                     </div>
                 )
             }
