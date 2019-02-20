@@ -23,12 +23,14 @@
                 this.setState({editing: true})
             },
             remove: function() {
-                console.log("Removing comment")
+                console.log("Removing comment");
+                this.props.deleteFromBoard(this.props.index);
             },
             save: function() {
                 let val = this.refs.newText.value;
                 console.log("New comment: "+ val);
-                this.setState({editing: false})
+                this.setState({editing: false});
+                this.props.updateCommentsText(val, this.props.index);
             },
             renderNormal: function() {
                 return (
@@ -71,14 +73,14 @@
                 arr.splice(i, 1);
                 this.setState({comments: arr});
             },
-            updaateComment: function(newText, i) {
+            updateComment: function(newText, i) {
                 console.log('Updating Comment id:' + {i} +'with text' + newText);
                 let arr = this.state.comments;
                 arr[i] = newText;
                 this.setState({comments: arr});
             },
             eachComment: function (text, i) {
-                return(<Comment key={i} index={i} >{text}</Comment>);
+                return(<Comment key={i} index={i} updateCommentsText={this.updateComment} deleteFromBoard={this.removeComment}>{text}</Comment>);
             },
             render: function () {
                 return(
